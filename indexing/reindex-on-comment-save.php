@@ -2,6 +2,11 @@
 // also make use of this, so that we don't get issues around exception classes
 use WebDevStudios\WPSWA\Algolia\AlgoliaSearch\Exceptions\AlgoliaException;
 
+/*
+ * The comment_post hook may be a better spot to trigger reindex on, as that one may be getting used to add comment meta to, which would be a logical reason someone wants to update an algolia instance.
+
+Note that comment_post doesn't pass the comment object, just the comment's ID.
+ */
 function algolia_index_on_comment( $id, $comment ) {
 	$searchable_post_types = get_post_types( [ 'exclude_from_search' => false, ] );
 	$indices[]             = new \Algolia_Searchable_Posts_Index( $searchable_post_types );
