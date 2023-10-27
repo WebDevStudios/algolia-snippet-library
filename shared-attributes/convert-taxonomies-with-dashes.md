@@ -1,11 +1,9 @@
+This snippet can be used to convert dashes in term slugs to underscores before index, and without having to rename the terms in WordPress.
+
+The reason why you would want to consider this is because when it comes to the Javascript templating, the dashes can get interpreted as math operations instead of a single object property.
+
+```php
 <?php
-/*
- * This snippet can be used to convert dashes in term slugs to underscores before index, and without having to rename
- * the terms in WordPress.
- *
- * The reason why you would want to consider this is because when it comes to the Javascript templating, the dashes
- * can get interpreted as math operations instead of a single object property.
- */
 function wds_algolia_convert_term_dashes_to_underscores( $shared_attributes, $post ) {
 
 	// Iterate over our taxonomies array
@@ -41,3 +39,4 @@ function wds_algolia_convert_term_dashes_to_underscores( $shared_attributes, $po
 	return $shared_attributes;
 }
 add_filter( 'algolia_searchable_post_shared_attributes', 'wds_algolia_convert_term_dashes_to_underscores', 10, 2 );
+```
