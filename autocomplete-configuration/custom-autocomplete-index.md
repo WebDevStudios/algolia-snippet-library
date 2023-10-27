@@ -1,13 +1,11 @@
-<?php
-/*
- * This snippet can be used to add an index to the autocomplete configuration, without it being available
- * in the Autocomplete Settings page.
- *
- * Indexes for the configuration's array should match up with the columns on the settings page.
- *
- * Note: `tmpl_suggestion` is for Autocomplete version 0.38.x and earlier.
- */
+This snippet can be used to add an index to the autocomplete configuration, without it being available in the Autocomplete Settings page.
 
+Indexes for the configuration's array should match up with the columns on the settings page.
+
+> Note: `tmpl_suggestion` is for Autocomplete version 0.38.x and earlier.
+
+```php
+<?php
 function wds_algolia_add_custom_index( $config ) {
 	$config[] = [
 		'enabled'         => true, // Same as the checkbox
@@ -23,3 +21,4 @@ function wds_algolia_add_custom_index( $config ) {
 	return $config;
 }
 add_filter( 'algolia_autocomplete_config', 'wds_algolia_add_custom_index' );
+```

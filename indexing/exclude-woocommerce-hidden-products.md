@@ -1,8 +1,7 @@
+This snippet can be used to check if a product has been marked with visibility of "shop only" or "hidden", and if true, prevent from being indexed in Algolia.
+
+```php
 <?php
-/*
- * This snippet can be used to check if a product has been marked with visibility of "shop only"
- * or "hidden", and if true, prevent from being indexed in Algolia.
- */
 function wds_algolia_exclude_catalog_hidden_products( $should_index, WP_Post $post ) {
 
 	if ( false === $should_index ) {
@@ -25,3 +24,4 @@ function wds_algolia_exclude_catalog_hidden_products( $should_index, WP_Post $po
 add_filter( 'algolia_should_index_searchable_post', 'wds_algolia_exclude_catalog_hidden_products', 10, 2 );
 //For Autocomplete results.
 add_filter( 'algolia_should_index_post', 'wds_algolia_exclude_catalog_hidden_products', 10, 2 );
+```

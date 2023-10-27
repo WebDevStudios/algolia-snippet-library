@@ -1,11 +1,9 @@
-<?php
-/*
- * This snippet can be used to trigger a full re-index when a user has been deleted.
- *
- * Use this snippet at your own risk as there's good chance that the request could time out, especially if you have
- * a large index. This snippet won't run via AJAX like the WP Search with Algolia UI does.
- */
+This snippet can be used to trigger a full re-index when a user has been deleted.
 
+Use this snippet at your own risk as there's good chance that the request could time out, especially if you have a large index. This snippet won't run via AJAX like the WP Search with Algolia UI does.
+
+```php
+<?php
 function wds_algolia_reindex_on_user_delete( $user_id ) {
 	$searchable_post_types = get_post_types(
 		[
@@ -39,3 +37,4 @@ function wds_algolia_reindex_on_user_delete( $user_id ) {
 	}
 }
 add_action( 'deleted_user', 'wds_algolia_reindex_on_user_delete', 10, 1 );
+```

@@ -1,8 +1,7 @@
-<?php
-/*
- * This snippet can be used to trigger a re-index of a post when a comment has been received.
- */
+This snippet can be used to trigger a re-index of a post when a comment has been received.
 
+```php
+<?php
 // also make use of this, so that we don't get issues around exception classes
 use WebDevStudios\WPSWA\Algolia\AlgoliaSearch\Exceptions\AlgoliaException;
 
@@ -42,3 +41,4 @@ function wds_algolia_index_on_comment( $comment_id, $comment_approved, $comment_
 	}
 }
 add_action( 'comment_post', 'wds_algolia_index_on_comment', 10, 3 );
+```
