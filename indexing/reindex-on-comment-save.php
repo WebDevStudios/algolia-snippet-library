@@ -1,13 +1,12 @@
 <?php
+/*
+ * This snippet can be used to trigger a re-index of a post when a comment has been received.
+ */
+
 // also make use of this, so that we don't get issues around exception classes
 use WebDevStudios\WPSWA\Algolia\AlgoliaSearch\Exceptions\AlgoliaException;
 
-/*
- * The comment_post hook may be a better spot to trigger reindex on, as that one may be getting used to add comment meta to, which would be a logical reason someone wants to update an algolia instance.
-
-Note that comment_post doesn't pass the comment object, just the comment's ID.
- */
-function algolia_index_on_comment( $id, $comment ) {
+function wds_algolia_index_on_comment( $comment_id, $comment_approved, $comment_data ) {
 	$searchable_post_types = get_post_types( [ 'exclude_from_search' => false, ] );
 	$indices[]             = new \Algolia_Searchable_Posts_Index( $searchable_post_types );
 
@@ -16,7 +15,7 @@ function algolia_index_on_comment( $id, $comment ) {
 	$index_name_prefix  = $algolia_plugin->get_settings()->get_index_name_prefix();
 	$client             = $algolia_plugin->get_api()->get_client();
 
-	$commented_post = get_post( $comment->comment_post_ID );
+	$commented_post = get_post( $comment_data->comment_post_ID );
 
 	// Only include Autocomplete index if enabled.
 	if ( in_array( 'posts_' . $commented_post->post_type, $synced_indices_ids, true ) ) {
@@ -42,4 +41,4 @@ function algolia_index_on_comment( $id, $comment ) {
 		}
 	}
 }
-add_action( 'wp_insert_comment', 'algolia_index_on_comment', 10, 2 );
+add_action( 'comment_post', 'wds_algolia_index_on_comment', 10, 3 );
