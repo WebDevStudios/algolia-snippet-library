@@ -1,6 +1,10 @@
-This snippet can be used to define the index name prefix based on current environment variable. This should be saved in a custom plugin or your active theme's `functions.php` file.
+This snippet can be used to define the index name prefix based on current environment variables.
 
 The prefix values can be whatever you want to differentiate between the environments.
+
+## General WordPress
+
+This should be saved in a custom plugin or your active theme's `functions.php` file.
 
 ```php
 switch ( wp_get_environment_type() ) {
