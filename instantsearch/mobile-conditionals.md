@@ -16,7 +16,6 @@ add_action( 'wp_enqueue_scripts', 'wds_algolia_example_scripts' );
 
 ```js
 instantsearch.widgets.configure({
-	filters: 'webStatus:Available',
 	hitsPerPage: extraConfig.is_mobile ? 3 : 9, // Make use of ternary operator to determine the value.
-})
+});
 ```
