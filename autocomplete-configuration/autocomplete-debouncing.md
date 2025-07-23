@@ -1,3 +1,5 @@
+> As of WP Search with Algolia 2.10.0, UI settings for debouncing have been added, negating need to use this documentation.
+
 This snippet shows how to customize the `autocomplete.php` template file to add in a debounce parameter.
 
 > Template code shown is accurate as of autocomplete.php template version 2.5.3, copied from `WP Search with Algolia` version 2.8.2. It is intended for Autocomplete version 0.38.x or earlier, which is the out of box version for WP Search with Algolia 2.8.2.
