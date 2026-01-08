@@ -94,7 +94,7 @@ function wds_algolia_search_starts_with_dash( $string ) {
 // Check if string contains any "odd" characters that do not relate to probable search phrases or queries.
 function wds_algolia_search_contains_odd_characters( $string ) {
 	$contains = false;
-	$chars = [';', ':', '.', '<', '>', '=', '/', "'", ',', '{', '}', ];
+	$chars = [';', ':', '.', '<', '>', '=', '/', ',', '{', '}', ];
 	foreach( $chars as $char ) {
 		if ( str_contains( $string, $char ) ) {
 			$contains = true;
